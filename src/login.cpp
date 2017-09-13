@@ -41,7 +41,7 @@ login::~login() noexcept {
 void login::init() noexcept {
     client::init();
 
-    this->setObjectName("login");
+    setObjectName("login");
 
     impl->un.setText(QString::fromUtf16(u"ÓÃ»§Ãû"));
     impl->pw.setText(QString::fromUtf16(u"ÃÜÂë"));

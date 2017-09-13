@@ -37,7 +37,6 @@ void friends::init() {
         return layout;
     }());
 
-    this->setObjectName("friends");
 }
 
 friends::~friends() {
