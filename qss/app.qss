@@ -1,0 +1,17 @@
+
+QWidget{
+}
+
+pp--login{
+	background:#ccff66;
+    border-radius: 10px;
+}
+
+QWidget#friends{
+	background:#66ccff;
+}
+QLabel{
+	color:red;
+}
+
+
