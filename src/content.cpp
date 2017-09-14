@@ -90,7 +90,7 @@ void content::mouseMoveEvent(QMouseEvent * event) {
         switch (impl->moveDirection) {
         case resize_left:
             qDebug() << " resize_left ";
-            if (event->globalPos().x() < impl->lastGobalPos.x()+impl->lastSize.width()-resize_offset*2) {
+			if (event->globalPos().x() < impl->lastGobalPos.x() + resize_offset){
                 const auto rx = impl->lastSize.width() + impl->lastGobalPos.x() - event->globalPos().x();
                 const auto ry = impl->lastSize.height();
                 this->resize(rx, ry);
@@ -101,29 +101,78 @@ void content::mouseMoveEvent(QMouseEvent * event) {
             break;
         case resize_right:
             qDebug() << " resize_right ";
-            if (impl->lastSize.width()+ event->globalPos().x() - impl->lastGobalPos.x() > resize_offset * 2){
-            this->resize(event->pos().x(), impl->lastSize.height());
-            }
+			this->resize(event->pos().x(), impl->lastSize.height());
             break;
         case resize_bottom:
-            this->resize(impl->lastSize.width(), event->pos().y());
             qDebug() << " resize_bottom ";
+            this->resize(impl->lastSize.width(), event->pos().y());
             break;
         case resize_top:
-            qDebug() << " resize_top ";
-            break;
+			qDebug() << " resize_top "; 
+			if(event->globalPos().y() < impl->lastGobalPos.y() + resize_offset){
+				const auto rx = impl->lastSize.width();
+				const auto ry = impl->lastSize.height() + impl->lastGobalPos.y() - event->globalPos().y();
+				this->resize(rx, ry);
+				const auto mx = impl->lastGobalPos.x() - impl->lastPos.x();
+				const auto my = event->globalPos().y() - impl->lastPos.y();
+				this->move(mx, my); 
+			}
+			break;
         case resize_left | resize_bottom:
             qDebug() << " resize_left|resize_bottom ";
+			if (event->globalPos().x() < impl->lastGobalPos.x() + resize_offset) {
+				const auto rx = impl->lastSize.width() + impl->lastGobalPos.x() - event->globalPos().x();
+				this->resize(rx, event->pos().y());
+				const auto mx = event->globalPos().x() - impl->lastPos.x();
+				const auto my = impl->lastGobalPos.y() - impl->lastPos.y();
+				this->move(mx, my);
+			}
+			else
+				this->resize(impl->lastSize.width(), event->pos().y());
             break;
         case resize_left | resize_top:
             qDebug() << " resize_left|resize_top ";
+			if (event->globalPos().x() < impl->lastGobalPos.x() + resize_offset && event->globalPos().y() < impl->lastGobalPos.y() + resize_offset) {
+				const auto rx = impl->lastSize.width() + impl->lastGobalPos.x() - event->globalPos().x();
+				const auto ry = impl->lastSize.height() + impl->lastGobalPos.y() - event->globalPos().y();
+				this->resize(rx, ry);
+				const auto mx = event->globalPos().x() - impl->lastPos.x();
+				const auto my = event->globalPos().y() - impl->lastPos.y();
+				this->move(mx, my);
+			}
+			else if (event->globalPos().x() < impl->lastGobalPos.x() + resize_offset) {
+				const auto rx = impl->lastSize.width() + impl->lastGobalPos.x() - event->globalPos().x();
+				const auto ry = impl->lastSize.height();
+				this->resize(rx, ry);
+				const auto mx = event->globalPos().x() - impl->lastPos.x();
+				const auto my = impl->lastGobalPos.y() - impl->lastPos.y();
+				this->move(mx, my);
+			}
+			else if (event->globalPos().y() < impl->lastGobalPos.y() + resize_offset) {
+				const auto rx = impl->lastSize.width();
+				const auto ry = impl->lastSize.height() + impl->lastGobalPos.y() - event->globalPos().y();
+				this->resize(rx, ry);
+				const auto mx = impl->lastGobalPos.x() - impl->lastPos.x();
+				const auto my = event->globalPos().y() - impl->lastPos.y();
+				this->move(mx, my);
+			}
             break;
         case resize_right | resize_bottom:
-            this->resize(event->pos().x(), event->pos().y());
             qDebug() << " resize_right|resize_bottom ";
+            this->resize(event->pos().x(), event->pos().y());
             break;
         case resize_right | resize_top:
             qDebug() << " resize_right|resize_top ";
+			if (event->globalPos().y() < impl->lastGobalPos.y() + resize_offset) {
+				const auto rx = event->pos().x();
+				const auto ry = impl->lastSize.height() + impl->lastGobalPos.y() - event->globalPos().y();
+				this->resize(rx, ry);
+				const auto mx = impl->lastGobalPos.x() - impl->lastPos.x();
+				const auto my = event->globalPos().y() - impl->lastPos.y();
+				this->move(mx, my);
+			}
+			else
+				this->resize(event->pos().x(), impl->lastSize.height());
             break;
         default:
             qDebug() << "move";
