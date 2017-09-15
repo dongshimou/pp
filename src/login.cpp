@@ -38,15 +38,15 @@ login::~login() noexcept {
 }
 
 void login::init() noexcept {
-    // ÍøÂç³õÊ¼»¯
+    // ç½‘ç»œåˆå§‹åŒ–
     client::init();
 
     {// init layout
         auto mainLayout = new QVBoxLayout{ this };
         mainLayout->setMargin(ui::login::layoutMargin);
-        mainLayout->addWidget(&impl->un);
+        mainLayout->addWidget(&impl->un, Qt::AlignLeft);
         mainLayout->addWidget(&impl->username);
-        mainLayout->addWidget(&impl->pw);
+        mainLayout->addWidget(&impl->pw, Qt::AlignLeft);
         mainLayout->addWidget(&impl->password);
         mainLayout->addStretch(1);
         mainLayout->addLayout([=]() {
@@ -59,7 +59,7 @@ void login::init() noexcept {
 
     {// setting model
         impl->password.setEchoMode(QLineEdit::Password);
-        ///todo ½çÃæ×Ö·û´Óconfig¶ÁÈ¡
+        ///todo ç•Œé¢å­—ç¬¦ä»configè¯»å–
         impl->un.setText(QString::fromUtf16(u"<h1>:account</h1>"));
         impl->pw.setText(QString::fromUtf16(u"<h1>:password</h1>"));
 
@@ -69,14 +69,12 @@ void login::init() noexcept {
         impl->loginIn.setIcon({ pixmap });
         impl->loginIn.setProperty("IconBackground", true);
 #else
-        impl->loginIn.setFixedSize(
-        { ui::login::iconWidth,ui::login::iconHeight }
-        );
+        impl->loginIn.setFixedSize({ ui::login::iconWidth,
+                                   ui::login::iconHeight });
         impl->loginIn.setObjectName("login_in");
 
-        impl->login_out.setFixedSize(
-        { ui::login::iconWidth,ui::login::iconHeight }
-        );
+        impl->login_out.setFixedSize({ ui::login::iconWidth,
+                                     ui::login::iconHeight });
         impl->login_out.setObjectName("login_out");
 #endif
     }
@@ -86,7 +84,7 @@ void login::init() noexcept {
         auto password = impl->password.text();
 
 
-        ///µã»÷µÇÂ¼
+        ///ç‚¹å‡»ç™»å½•
     });
     connect(&impl->login_out, &QPushButton::clicked,
             this, [=]() {
@@ -94,10 +92,10 @@ void login::init() noexcept {
     });
     connect(client::getInstance(), &client::loginStatus,
             this, [=](client::LOGIN_STATUS status) {
-        //µÇÂ¼×´Ì¬
+        //ç™»å½•çŠ¶æ€
         switch (status) {
         case client::LOGIN_STATUS::SUCCESS:
-            //µÇÂ¼³É¹¦
+            //ç™»å½•æˆåŠŸ
             manager::openFriends();
             break;
         default:
