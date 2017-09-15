@@ -7,11 +7,11 @@ namespace pp {
 
 static const int resize_offset = 20;
 
-static const int resize_none = 0x00000;
-static const int resize_left = 0x00001;
-static const int resize_right = 0x00010;
-static const int resize_top = 0x00100;
-static const int resize_bottom = 0x01000;
+static const int resize_none =      0x00000;
+static const int resize_left =      0x00001;
+static const int resize_right =     0x00010;
+static const int resize_top =       0x00100;
+static const int resize_bottom =    0x01000;
 
 struct content::Private {
     bool leftPressed;
