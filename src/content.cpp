@@ -5,7 +5,7 @@
 #include <QMouseEvent>
 namespace pp {
 
-static const int resize_offset = 5;
+static const int resize_offset = 10;
 
 static const int resize_none =      0x00000;
 static const int resize_left =      0x00001;
@@ -16,7 +16,7 @@ static const int resize_bottom =    0x01000;
 struct content::Private {
     bool leftPressed;
     QPoint lastPos;
-    int moveDirection;
+    int resizeDirection;
     QSize lastSize;
     QPoint lastGobalPos;
 };
@@ -25,16 +25,14 @@ content::content(QWidget *child) noexcept {
     impl = new Private;
     [=]() {
         impl->leftPressed = false;
-        impl->moveDirection = 0;
+        impl->resizeDirection = resize_none;
     }();
-    QGridLayout *layout = new QGridLayout();
+    QGridLayout *layout = new QGridLayout{ this };
     layout->addWidget(child, 0, 0);
     layout->setContentsMargins(4, 4, 4, 4);
-    setLayout(layout);
 
     setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground, true);
-    // setAttribute(Qt::WA_PaintOnScreen);
     // setWindowOpacity(0.8);
     this->show();
 }
@@ -51,16 +49,16 @@ void content::mousePressEvent(QMouseEvent *event) {
         impl->lastGobalPos = event->globalPos();
         // left
         if (event->pos().x() < resize_offset)
-            impl->moveDirection |= resize_left;
+            impl->resizeDirection |= resize_left;
         // right
         if (event->pos().x() > this->size().width() - resize_offset)
-            impl->moveDirection |= resize_right;
+            impl->resizeDirection |= resize_right;
         // top
         if (event->pos().y() < resize_offset)
-            impl->moveDirection |= resize_top;
+            impl->resizeDirection |= resize_top;
         // bottom
         if (event->pos().y() > this->size().height() - resize_offset)
-            impl->moveDirection |= resize_bottom;
+            impl->resizeDirection |= resize_bottom;
         event->ignore();
     }
 }
@@ -68,7 +66,7 @@ void content::mousePressEvent(QMouseEvent *event) {
 void content::mouseReleaseEvent(QMouseEvent *event) {
     if (impl->leftPressed)
         impl->leftPressed = false;
-    impl->moveDirection = resize_none;
+    impl->resizeDirection = resize_none;
     event->ignore();
 }
 
@@ -85,7 +83,7 @@ void content::mouseDoubleClickEvent(QMouseEvent *event) {
 void content::mouseMoveEvent(QMouseEvent *event) {
     if (impl->leftPressed) {
         qDebug() << event->pos();
-        switch (impl->moveDirection) {
+        switch (impl->resizeDirection) {
         case resize_left:
             qDebug() << " resize_left ";
             if (event->globalPos().x() <

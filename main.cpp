@@ -14,5 +14,6 @@ int main(int argc, char *argv[])
     }
     //启动
     pp::manager::init();
+
     return a.exec();
 }

@@ -14,7 +14,7 @@ window::window(WINDOW_TYPE type, QWidget * parent) noexcept
     impl = new Private;
     [=]() {
         impl->type = type;
-        impl->content = new content(this);
+        impl->content = new content{ this };
     }();
 
     ///magic

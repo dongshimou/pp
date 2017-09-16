@@ -6,6 +6,10 @@
 
 #include "icon.h"
 
+//debug halo
+#include "ui/haloBorder.h"
+#include "ui/haloWidget.h"
+
 #include <QLineEdit>
 #include <QLabel>
 #include <QPushButton>
@@ -49,6 +53,12 @@ void login::init() noexcept {
         mainLayout->addWidget(&impl->pw, Qt::AlignLeft);
         mainLayout->addWidget(&impl->password);
         mainLayout->addStretch(1);
+        //
+        auto testlayout = new QHBoxLayout;
+        mainLayout->addLayout(testlayout);
+        testlayout->addWidget(new ui::haloBorder);
+        testlayout->addWidget(new ui::haloWidget);
+        //
         mainLayout->addLayout([=]() {
             auto loginLayout = new QHBoxLayout;
             loginLayout->addWidget(&impl->loginIn);
