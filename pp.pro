@@ -37,6 +37,7 @@ SOURCES += \
         src/ui/haloBorder.cpp \
         src/ui/haloWidget.cpp \
         src/ui/ppDialog.cpp \
+        src/ui/ppLabel.cpp \
         src/queue.cpp 
 		
 HEADERS += \
@@ -51,6 +52,7 @@ HEADERS += \
         src/ui/haloBorder.h \
         src/ui/haloWidget.h \
         src/ui/ppDialog.h \
+        src/ui/ppLabel.h \
         src/queue.h \
         src/spinlock.h \
         src/icon.h \

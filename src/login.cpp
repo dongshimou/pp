@@ -9,6 +9,7 @@
 //debug halo
 #include "ui/haloBorder.h"
 #include "ui/haloWidget.h"
+#include "ui/ppLabel.h"
 
 #include <QLineEdit>
 #include <QLabel>
@@ -53,11 +54,14 @@ void login::init() noexcept {
         mainLayout->addWidget(&impl->pw, Qt::AlignLeft);
         mainLayout->addWidget(&impl->password);
         mainLayout->addStretch(1);
-        //
+        //Test
         auto testlayout = new QHBoxLayout;
         mainLayout->addLayout(testlayout);
         testlayout->addWidget(new ui::haloBorder);
         testlayout->addWidget(new ui::haloWidget);
+        auto l = new ui::ppLabel;
+        l->setText("click me!!!");
+        testlayout->addWidget(l);
         //
         mainLayout->addLayout([=]() {
             auto loginLayout = new QHBoxLayout;

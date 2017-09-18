@@ -18,6 +18,16 @@ QLabel{
 	font-family: 'Microsoft YaHei';
 }
 
+QLabel[ppLabel="false"]{
+	color:rgba(60,60,60,255);
+}
+QLabel[ppLabel="false"]:hover{
+	color:rgba(192,192,192,255);
+}
+QLabel[ppLabel="true"]{
+	color:rgba(255,255,255,255);
+}
+
 *[ IconBackground ="true"]{
 	border:none;
 	background:transparent;
