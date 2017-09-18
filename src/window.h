@@ -14,7 +14,7 @@ public:
 
         //重复窗口
         TALK_WINDOW,
-
+        DIALOG_WINDOW,
         WINDOW_COUNT,
     };
 private:
@@ -22,7 +22,7 @@ private:
     Private* impl;
     using super = QWidget;
 public:
-    explicit window(WINDOW_TYPE type = NORMAL_WINDOW, QWidget* parent = nullptr)noexcept;
+    explicit window(WINDOW_TYPE type = NORMAL_WINDOW)noexcept;
     constexpr WINDOW_TYPE getWindowType()const noexcept;
     virtual ~window()noexcept;
 };

@@ -11,7 +11,7 @@ private:
     Private* impl;
     using super = window;
 public:
-    explicit login(QWidget *parent = 0)noexcept;
+    explicit login()noexcept;
     virtual ~login()noexcept;
 
 private:

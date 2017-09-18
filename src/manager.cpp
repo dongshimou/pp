@@ -4,6 +4,8 @@
 #include "friends.h"
 #include "talk.h"
 
+#include "./ui/ppDialog.h"
+
 #include <QApplication>
 
 #include <map>
@@ -66,6 +68,10 @@ QWidget * manager::openFriends() {
 
 QWidget * manager::openTalk(userID uid) {
     return openRepetWindow(new talk(uid));
+}
+
+QWidget * manager::openDialog() {
+    return openRepetWindow(new ui::ppDialog);
 }
 
 }

@@ -16,6 +16,7 @@ public:
     static QWidget* openLogin();
     static QWidget* openFriends();
     static QWidget* openTalk(userID uid);
+    static QWidget* openDialog();
     static void init();
 private:
     template<class T>

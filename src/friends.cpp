@@ -15,8 +15,8 @@ struct friends::Private {
     QLabel name;
     QWidgetList friendList;
 };
-friends::friends(QWidget * parent) 
-:super(FRIENDS_WINDOW,parent){
+friends::friends() 
+:super(FRIENDS_WINDOW){
     impl = new Private;
     init();
 }

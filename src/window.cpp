@@ -9,8 +9,7 @@ struct window::Private {
     content *content;
 };
 
-window::window(WINDOW_TYPE type, QWidget * parent) noexcept
-    :QWidget(parent) {
+window::window(WINDOW_TYPE type) noexcept{
     impl = new Private;
     [=]() {
         impl->type = type;

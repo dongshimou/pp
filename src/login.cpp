@@ -30,8 +30,8 @@ struct login::Private {
     //QVBoxLayout mainLayout;
 
 };
-login::login(QWidget *parent)noexcept
-    : super(LOGIN_WINDOW, parent) {
+login::login()noexcept
+    : super(LOGIN_WINDOW) {
     impl = new Private;
     this->setObjectName("login");
     init();
@@ -95,6 +95,7 @@ void login::init() noexcept {
 
 
         ///点击登录
+        manager::openDialog();
     });
     connect(&impl->login_out, &QPushButton::clicked,
             this, [=]() {

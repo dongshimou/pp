@@ -10,7 +10,7 @@ private:
     Private* impl;
     using super = window;
 public:
-    explicit talk(userID uid,QWidget* parent = nullptr)noexcept;
+    explicit talk(userID uid)noexcept;
     ~talk()noexcept;
 private:
     void init();

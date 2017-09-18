@@ -8,7 +8,7 @@ class friends :public window {
     Private* impl;
     using super = window;
 public:
-    explicit friends(QWidget* parent=nullptr);
+    explicit friends();
     ~friends();
 private:
     void init();
