@@ -1,6 +1,6 @@
 #pragma once
 
-#include "model.h"
+#include "../base/model.h"
 
 #include <QObject>
 namespace pp {

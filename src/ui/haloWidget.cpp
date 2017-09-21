@@ -32,7 +32,7 @@ haloWidget::haloWidget(QWidget * parent) noexcept {
         impl->ud = true;
     }();
     auto layout = new QGridLayout{ this };
-    layout->addWidget(new QLabel("fuck you"), 0, 0);
+    layout->addWidget(new QLabel("fuck you"), 0, 0,Qt::AlignCenter);
     connect(&impl->tick, &QTimer::timeout, this, [=]() {
         if (impl->ud) {
             impl->ops += 10;

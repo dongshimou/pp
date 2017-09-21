@@ -1,5 +1,5 @@
 #pragma once
-#include "model.h"
+#include "../base/model.h"
 
 #include "window.h"
 namespace pp {

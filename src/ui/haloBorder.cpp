@@ -1,6 +1,6 @@
 #include "haloBorder.h"
 
-#include "../content.h"
+#include "../window/content.h"
 #include <QPushButton>
 #include <QLabel>
 #include <QPainter>

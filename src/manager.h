@@ -1,6 +1,6 @@
 #pragma once
-#include "model.h"
-#include "window.h"
+#include "./base/model.h"
+#include "./window/window.h"
 
 namespace pp {
 class manager {

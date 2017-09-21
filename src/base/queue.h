@@ -1,8 +1,30 @@
-#include "queue.h"
-#include "spinlock.h"
+#pragma once
 
+#include "spinlock.h"
 #include <queue>
+
 namespace pp {
+
+template<class T>
+class queue {
+private:
+    struct Private;
+    Private* impl;
+public:
+    queue()noexcept;
+    queue(const queue&) = delete;
+    queue&operator=(const queue&) = delete;
+    ~queue()noexcept;
+    T front();
+    T back();
+    void pop();
+    void push(const T& value);
+    void push(T&& value);
+    size_t size();
+    bool empty();
+    void clear();
+};
+
 template<class T>
 struct queue<T>::Private {
     std::queue<T>q;
@@ -42,7 +64,7 @@ void queue<T>::pop() {
 template<class T>
 T queue<T>::front() {
     impl->l.lock();
-    auto r=impl->q.front();
+    auto r = impl->q.front();
     impl->l.unlock();
     return std::move(r);
 }
@@ -77,5 +99,4 @@ void queue<T>::clear() {
     impl->q.clear();
     impl->l.unlock();
 }
-
 }

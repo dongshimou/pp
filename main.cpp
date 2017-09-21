@@ -1,5 +1,4 @@
 #include "src/manager.h"
-#include "src/login.h"
 
 #include <QApplication>
 #include <QFile>

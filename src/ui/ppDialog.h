@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../window.h"
+#include "../window/window.h"
 
 namespace pp {
 namespace ui {

@@ -12,10 +12,16 @@ private:
     Private* impl;
 public:
     explicit ppLabel(QWidget* parent = nullptr)noexcept;
-    ~ppLabel();
+    ~ppLabel()noexcept;
+    
+    bool isActive()const;
+    void reStyle(bool);
 
     signals:
     void isActive(bool);
+    void isActive(const QWidget*);
+    public slots:
+    void setActive(bool);
 
 protected:
     void mousePressEvent(QMouseEvent *ev)override;

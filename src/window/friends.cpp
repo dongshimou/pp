@@ -1,7 +1,7 @@
 #include "friends.h"
 
-#include "manager.h"
-#include "client.h"
+#include "../manager.h"
+#include "../net/client.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>

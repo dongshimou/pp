@@ -1,8 +1,8 @@
 #include "manager.h"
 
-#include "login.h"
-#include "friends.h"
-#include "talk.h"
+#include "./window/login.h"
+#include "./window/friends.h"
+#include "./window/talk.h"
 
 #include "./ui/ppDialog.h"
 

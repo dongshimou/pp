@@ -20,19 +20,32 @@ ppLabel::ppLabel(QWidget * parent) noexcept
     this->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 }
 
-ppLabel::~ppLabel() {
+ppLabel::~ppLabel() noexcept {
     delete impl;
+}
+
+bool ppLabel::isActive() const {
+    return this->property("ppLabel").toBool();
+}
+
+void ppLabel::reStyle(bool status) {
+    this->setProperty("ppLabel", status);
+    this->style()->unpolish(this);
+    this->style()->polish(this);
+    qDebug() << this->property("ppLabel").toBool();
+    this->update();
+}
+
+void ppLabel::setActive(bool status) {
+    emit isActive(status);
+    emit isActive(static_cast<const QWidget*>(this));
+    reStyle(status);
 }
 
 void ppLabel::mousePressEvent(QMouseEvent * ev) {
     if (ev->button() == Qt::LeftButton) {
         auto status = this->property("ppLabel").toBool();
-        emit isActive(!status);
-        this->setProperty("ppLabel", !status);
-        this->style()->unpolish(this);
-        this->style()->polish(this);
-        qDebug() << this->property("ppLabel").toBool();
-        this->update();
+        setActive(!status);
     }
     ev->accept();
 }

@@ -25,35 +25,36 @@ DEFINES += QT_DEPRECATED_WARNINGS
 QMAKE_CXXFLAGS += /MP
 
 SOURCES += \
-        main.cpp \
-        src/login.cpp \
-        src/client.cpp \
-        src/friends.cpp \
-        src/talk.cpp \
-        src/config.cpp \
+        src/window/login.cpp \
+        src/net/client.cpp \
+        src/window/friends.cpp \
+        src/window/talk.cpp \
+        src/config/config.cpp \
         src/manager.cpp \
-        src/window.cpp \
-        src/content.cpp \
+        src/window/window.cpp \
+        src/window/content.cpp \
         src/ui/haloBorder.cpp \
         src/ui/haloWidget.cpp \
         src/ui/ppDialog.cpp \
         src/ui/ppLabel.cpp \
-        src/queue.cpp 
+        src/ui/ppMenu.cpp \
+        main.cpp 
 		
 HEADERS += \
-        src/login.h \
-        src/client.h \
-        src/friends.h \
-        src/talk.h \
-        src/config.h \
+        src/window/login.h \
+        src/net/client.h \
+        src/window/friends.h \
+        src/window/talk.h \
+        src/config/config.h \
         src/manager.h \
-        src/window.h \
-        src/content.h \
+        src/window/window.h \
+        src/window/content.h \
         src/ui/haloBorder.h \
         src/ui/haloWidget.h \
         src/ui/ppDialog.h \
         src/ui/ppLabel.h \
-        src/queue.h \
-        src/spinlock.h \
-        src/icon.h \
-        src/model.h 
+        src/ui/ppMenu.h \
+        src/base/queue.h \
+        src/base/spinlock.h \
+        src/config/icon.h \
+        src/base/model.h 

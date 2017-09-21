@@ -1,15 +1,18 @@
+#include "../net/client.h"
+
 #include "login.h"
-#include "client.h"
 #include "friends.h"
 
-#include "manager.h"
+#include "../manager.h"
 
-#include "icon.h"
+#include "../config/icon.h"
 
 //debug halo
-#include "ui/haloBorder.h"
-#include "ui/haloWidget.h"
-#include "ui/ppLabel.h"
+#include "../ui/haloBorder.h"
+#include "../ui/haloWidget.h"
+#include "../ui/ppLabel.h"
+#include "../ui/ppMenu.h"
+
 
 #include <QLineEdit>
 #include <QLabel>
@@ -59,9 +62,21 @@ void login::init() noexcept {
         mainLayout->addLayout(testlayout);
         testlayout->addWidget(new ui::haloBorder);
         testlayout->addWidget(new ui::haloWidget);
-        auto l = new ui::ppLabel;
-        l->setText("click me!!!");
-        testlayout->addWidget(l);
+        auto l1 = new ui::ppLabel;
+        l1->setText("menu1");
+        auto l2 = new ui::ppLabel;
+        l2->setText("menu2");
+        auto l3 = new ui::ppLabel;
+        l3->setText("menu3");
+
+        auto menu = new ui::ppMenu{ this };
+        menu->addWidget(l1);
+        menu->addWidget(l2);
+        menu->addWidget(l3);
+
+        testlayout->addWidget(l1);
+        testlayout->addWidget(l2);
+        testlayout->addWidget(l3);
         //
         mainLayout->addLayout([=]() {
             auto loginLayout = new QHBoxLayout;

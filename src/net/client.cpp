@@ -1,8 +1,7 @@
 #include "client.h"
-#include "queue.h"
-#include "queue.cpp"
+#include "../base/queue.h"
 
-#include "config.h"
+#include "../config/config.h"
 
 #include <QNetworkAccessManager>
 #include <QTcpSocket>

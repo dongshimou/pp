@@ -1,6 +1,6 @@
 #pragma once
 
-#include<QWidget>
+#include <QWidget>
 
 namespace pp {
 class window :public QWidget {
