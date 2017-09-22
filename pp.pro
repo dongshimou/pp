@@ -38,15 +38,19 @@ SOURCES += \
         src/ui/ppDialog.cpp \
         src/ui/ppLabel.cpp \
         src/ui/ppMenu.cpp \
+        src/ui/ppButton.cpp \
         main.cpp 
 		
 HEADERS += \
-        src/window/login.h \
         src/net/client.h \
+        src/window/login.h \
         src/window/friends.h \
         src/window/talk.h \
         src/config/config.h \
-        src/manager.h \
+        src/config/icon.h \
+        src/base/queue.h \
+        src/base/spinlock.h \
+        src/base/model.h \
         src/window/window.h \
         src/window/content.h \
         src/ui/haloBorder.h \
@@ -54,7 +58,6 @@ HEADERS += \
         src/ui/ppDialog.h \
         src/ui/ppLabel.h \
         src/ui/ppMenu.h \
-        src/base/queue.h \
-        src/base/spinlock.h \
-        src/config/icon.h \
-        src/base/model.h 
+        src/ui/ppButton.h \
+        src/manager.h 
+

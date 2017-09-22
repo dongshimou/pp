@@ -6,8 +6,7 @@
 namespace pp {
 namespace ui {
 
-struct ppLabel::Private {
-};
+struct ppLabel::Private { };
 
 ppLabel::ppLabel(QWidget * parent) noexcept
     :QLabel(parent) {
@@ -20,6 +19,11 @@ ppLabel::ppLabel(QWidget * parent) noexcept
     this->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 }
 
+ppLabel::ppLabel(QString label, QWidget * parent) noexcept 
+:ppLabel(parent){
+    this->setText(label);
+}
+
 ppLabel::~ppLabel() noexcept {
     delete impl;
 }
@@ -28,7 +32,7 @@ bool ppLabel::isActive() const {
     return this->property("ppLabel").toBool();
 }
 
-void ppLabel::reStyle(bool status) {
+void ppLabel::resetActiveStyle(bool status) {
     this->setProperty("ppLabel", status);
     this->style()->unpolish(this);
     this->style()->polish(this);
@@ -38,8 +42,9 @@ void ppLabel::reStyle(bool status) {
 
 void ppLabel::setActive(bool status) {
     emit isActive(status);
-    emit isActive(static_cast<const QWidget*>(this));
-    reStyle(status);
+    if (status)
+        emit isActive(static_cast<const QWidget*>(this));
+    resetActiveStyle(status);
 }
 
 void ppLabel::mousePressEvent(QMouseEvent * ev) {

@@ -17,9 +17,16 @@ public:
     void setMutex(bool mutexed = true);
     void addWidget(QWidget* child);
 
+    QWidget* getWidget(size_t index);
+
+signals:
+
+    void activeWidget(const QWidget* );
+    void activeIndex(size_t );
+
     public slots:
 
-    void changeMutexed(const QWidget*);
+    void activeChange(const QWidget*);
 };
 
 }

@@ -12,10 +12,12 @@ private:
     Private* impl;
 public:
     explicit ppLabel(QWidget* parent = nullptr)noexcept;
+    ppLabel(QString label, QWidget* parent = nullptr)noexcept;
     ~ppLabel()noexcept;
     
     bool isActive()const;
-    void reStyle(bool);
+private:
+    void resetActiveStyle(bool);
 
     signals:
     void isActive(bool);

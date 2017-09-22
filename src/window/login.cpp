@@ -62,17 +62,18 @@ void login::init() noexcept {
         mainLayout->addLayout(testlayout);
         testlayout->addWidget(new ui::haloBorder);
         testlayout->addWidget(new ui::haloWidget);
-        auto l1 = new ui::ppLabel;
-        l1->setText("menu1");
-        auto l2 = new ui::ppLabel;
-        l2->setText("menu2");
-        auto l3 = new ui::ppLabel;
-        l3->setText("menu3");
+        auto l1 = new ui::ppLabel{ "menu1" };
+        auto l2 = new ui::ppLabel{ "menu2" };
+        auto l3 = new ui::ppLabel{ "menu3" };
 
         auto menu = new ui::ppMenu{ this };
         menu->addWidget(l1);
         menu->addWidget(l2);
         menu->addWidget(l3);
+
+        connect(menu, &ui::ppMenu::activeIndex, this, [=](size_t index) {
+            qDebug() << "active index is" << index;
+        });
 
         testlayout->addWidget(l1);
         testlayout->addWidget(l2);
