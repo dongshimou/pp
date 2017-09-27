@@ -81,7 +81,6 @@ void haloBorder::paintEvent(QPaintEvent * event) {
     QPainterPath path;
     path.setFillRule(Qt::WindingFill);
     path.addRoundedRect(rect, impl->radius, impl->radius);
-    painter.setRenderHint(QPainter::Antialiasing, true);
 
     auto color = impl->color;
     const int haloSize = 9;

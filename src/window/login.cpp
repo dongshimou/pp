@@ -12,6 +12,8 @@
 #include "../ui/haloWidget.h"
 #include "../ui/ppLabel.h"
 #include "../ui/ppMenu.h"
+#include "../ui/ppButton.h"
+#include "../ui/ppGradual.h"
 
 
 #include <QLineEdit>
@@ -62,9 +64,11 @@ void login::init() noexcept {
         mainLayout->addLayout(testlayout);
         testlayout->addWidget(new ui::haloBorder);
         testlayout->addWidget(new ui::haloWidget);
+        testlayout->addWidget(new ui::ppGradual("./icon/background/alert.png"));
         auto l1 = new ui::ppLabel{ "menu1" };
         auto l2 = new ui::ppLabel{ "menu2" };
         auto l3 = new ui::ppLabel{ "menu3" };
+        auto b4 = new ui::ppButton{ "fuck" };
 
         auto menu = new ui::ppMenu{ this };
         menu->addWidget(l1);
@@ -78,6 +82,7 @@ void login::init() noexcept {
         testlayout->addWidget(l1);
         testlayout->addWidget(l2);
         testlayout->addWidget(l3);
+        testlayout->addWidget(b4);
         //
         mainLayout->addLayout([=]() {
             auto loginLayout = new QHBoxLayout;

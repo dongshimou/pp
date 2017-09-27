@@ -64,10 +64,19 @@ ppDialog::ppDialog() noexcept
         "background:rgba(12,34,56,128);"
         "}"
     );
+
+    connect(&impl->no,&QPushButton::clicked,
+            this, [=]() {
+        this->close();
+    });
 }
 
 ppDialog::~ppDialog() noexcept {
     delete impl;
+}
+
+void ppDialog::close() noexcept {
+    delete this;
 }
 
 void ppDialog::paintEvent(QPaintEvent * event) {

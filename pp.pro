@@ -39,6 +39,7 @@ SOURCES += \
         src/ui/ppLabel.cpp \
         src/ui/ppMenu.cpp \
         src/ui/ppButton.cpp \
+        src/ui/ppGradual.cpp \
         main.cpp 
 		
 HEADERS += \
@@ -59,5 +60,6 @@ HEADERS += \
         src/ui/ppLabel.h \
         src/ui/ppMenu.h \
         src/ui/ppButton.h \
+        src/ui/ppGradual.h \
         src/manager.h 
 

@@ -14,6 +14,7 @@ private:
 public:
     explicit ppDialog()noexcept;
     ~ppDialog()noexcept;
+    void close()noexcept;
 
 protected:
     void paintEvent(QPaintEvent * event)override;
